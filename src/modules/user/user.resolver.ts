@@ -5,18 +5,17 @@ import { UseGuards } from '@nestjs/common';
 
 @Resolver('UserResponse')
 export class UserResolver {
-    constructor(private readonly userService: UserService) {}
+    constructor(private readonly userService: UserService) { }
 
     @Query('user')
     @UseGuards(UserGuard)
     user(@Context() ctx) {
         // console.log('dsf', ctx);
         return {
-            user: {
-                nickname: 'sdf',
-                baseResponse: {
-                    statusCode: 0
-                }
+
+            nickname: 'sdf',
+            baseResponse: {
+                statusCode: 0
             }
         }
     }

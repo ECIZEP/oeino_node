@@ -3,3 +3,5 @@ dist
 .DS_Store
 .vscode
 yarn-error.log
+src/config/oAuth2.config.ts
+sessions
