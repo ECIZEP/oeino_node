@@ -1,0 +1,42 @@
+{
+    "name": "oeino_node",
+    "version": "1.0.0",
+    "description": "nest.js",
+    "main": "index.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development nodemon"
+    },
+    "author": "ECIZEP",
+    "license": "ISC",
+    "nodemonConfig": {
+        "watch": [
+            "src"
+        ],
+        "ext": "ts",
+        "ignore": [
+            "src/**/*.spec.ts"
+        ],
+        "exec": "ts-node src/main.ts"
+    },
+    "devDependencies": {
+        "cross-env": "^5.2.0",
+        "ts-node": "^7.0.1"
+    },
+    "dependencies": {
+        "@nestjs/common": "^5.3.7",
+        "@nestjs/core": "^5.3.7",
+        "@nestjs/graphql": "^5.4.0",
+        "@nestjs/typeorm": "^5.2.2",
+        "apollo-server-express": "^2.1.0",
+        "express-session": "^1.15.6",
+        "graphql": "^14.0.2",
+        "graphql-tools": "^4.0.0",
+        "mysql": "^2.16.0",
+        "reflect-metadata": "^0.1.12",
+        "rxjs": "^6.3.3",
+        "session-file-store": "^1.2.0",
+        "typeorm": "^0.2.7",
+        "typescript": "^3.0.3",
+        "uuid": "^3.3.2"
+    }
+}

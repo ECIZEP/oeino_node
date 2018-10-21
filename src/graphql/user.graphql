@@ -1,0 +1,31 @@
+type UserResponse {
+    id: Int,
+    wechat: String,
+    weibo: String,
+    googleId: String,
+    githubId: String,
+    nickname: String,
+    avatar: String,
+    email: String,
+    # 个性签名
+    signature: String,
+    intro: String,
+    gender: Int,
+    createTime: Int,
+
+    baseResponse: BaseResponse
+}
+
+type Haha {
+    title: String
+}
+
+type TestResponse {
+    hahah: Haha,
+    baseResponse: BaseResponse
+}
+
+type Query {
+    user: UserResponse,
+    test: TestResponse
+}
