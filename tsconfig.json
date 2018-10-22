@@ -14,7 +14,7 @@
         "baseUrl": "./src"
     },
     "include": [
-        "nest/**/*"
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
