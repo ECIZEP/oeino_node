@@ -25,7 +25,6 @@ export class UserService {
         !!weibo ? null : delete queryObj.weibo;
         !!googleId ? null : delete queryObj.googleId;
         !!githubId ? null : delete queryObj.githubId;
-        console.log(queryObj);
         return await this.userRepository.find({
             where: queryObj
         });

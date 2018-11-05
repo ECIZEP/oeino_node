@@ -1,0 +1,16 @@
+type Category {
+    id: String,
+    userId: String,
+    categoryName: String
+}
+
+type Query {
+    getCategory: [Category]
+    hah: String
+}
+
+type Mutation {
+    createCategory(categoryName: String!): Category,
+    updateCategory(categoryId: String!, categoryName: String!): Boolean,
+    deleteCategory(categoryId: String!): Boolean
+}

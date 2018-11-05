@@ -4,7 +4,7 @@ import * as uuid from 'uuid/v1';
 @Entity()
 export class CommentReply {
 
-    @PrimaryColumn({ type: 'varchar', length: 100, comment: 'uuid' })
+    @PrimaryColumn({ type: 'varchar', length: 100, comment: 'uid' })
     id: string;
 
     @Column({ type: 'varchar', length: 100, comment: '用户id'})

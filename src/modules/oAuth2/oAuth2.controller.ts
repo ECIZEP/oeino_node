@@ -44,7 +44,8 @@ export class OAuth2Controler {
                 response_type: 'code',
                 redirect_uri: platformConfig.redirectUri,
                 state: JSON.stringify({
-                    platform: query.platform
+                    platform: query.platform,
+                    returnUrl: query.returnUrl
                 })
             }));
         } else {
@@ -60,7 +61,7 @@ export class OAuth2Controler {
     signOut(@Session() session,  @Response() res) {
         session.user = null;
         delete session.user;
-        res.redirect('/oauth2/user');
+        res.redirect('/dashboard/index.html/#login');
     }
 
     @Get('oauth2callback')
@@ -152,7 +153,7 @@ export class OAuth2Controler {
                     userInstance = await this.userService.add(userInstance);
                 }
                 session.user = userInstance;
-                res.redirect('/oauth2/user');
+                res.redirect(state.returnUrl || '/');
             }
         } else {
             return res.json({

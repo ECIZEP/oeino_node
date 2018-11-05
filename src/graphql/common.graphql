@@ -1,4 +1,0 @@
-type BaseResponse {
-    statusCode: Int,
-    message: String
-}

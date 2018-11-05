@@ -1,5 +1,5 @@
-type UserResponse {
-    id: Int,
+type User {
+    id: String,
     wechat: String,
     weibo: String,
     googleId: String,
@@ -12,20 +12,8 @@ type UserResponse {
     intro: String,
     gender: Int,
     createTime: Int,
-
-    baseResponse: BaseResponse
-}
-
-type Haha {
-    title: String
-}
-
-type TestResponse {
-    hahah: Haha,
-    baseResponse: BaseResponse
 }
 
 type Query {
-    user: UserResponse,
-    test: TestResponse
+    user: User
 }
