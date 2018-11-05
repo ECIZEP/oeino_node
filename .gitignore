@@ -4,4 +4,5 @@ dist
 .vscode
 yarn-error.log
 src/config/oAuth2.config.ts
+src/config/index.ts
 sessions
