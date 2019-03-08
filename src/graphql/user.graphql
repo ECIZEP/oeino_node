@@ -6,6 +6,7 @@ type User {
     githubId: String,
     nickname: String,
     avatar: String,
+    bgUrl: String,
     email: String,
     # 个性签名
     signature: String,
@@ -16,4 +17,17 @@ type User {
 
 type Query {
     user: User
+}
+
+input UserInput {
+    nickname: String,
+    avatar: String,
+    bgUrl: String,
+    signature: String,
+    intro: String,
+    gender: Int
+}
+
+type Mutation {
+    updateUser(updateFields: UserInput!):Boolean
 }

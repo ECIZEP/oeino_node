@@ -16,7 +16,6 @@ import { CategoryModule } from './modules/category/category.module';
             typePaths: ['./**/*.graphql'],
             context: (context) => {
                 const { req, res } = context;
-                // if (req.session && !req.session.user) res.json({statusCode:203})
                 return context
             },
             formatResponse: response => {

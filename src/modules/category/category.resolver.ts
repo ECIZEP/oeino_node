@@ -1,6 +1,7 @@
 import { Resolver, Context, Query, Mutation, Args } from "@nestjs/graphql";
 import { CategoryService } from "./category.service";
 import { Category } from "../../entity/category.entity";
+import { ServerUnavailableError } from "../../util/errors";
 
 @Resolver('Category')
 export class CategoryResolver {
@@ -13,28 +14,44 @@ export class CategoryResolver {
     }
 
     @Query('getCategory')
-    getUserCategory(@Context() ctx) {
-        return this.categoryService.findByUserId(this.userId(ctx));
+    async getUserCategory(@Context() ctx) {
+        let result = await this.categoryService.findByUserId(this.userId(ctx));
+        if (result instanceof Array) {
+            return result;
+        } else {
+            throw new ServerUnavailableError('Service Error: findByUserId');
+        }
     }
 
     @Mutation('createCategory')
-    createCategory(@Context() ctx, @Args() args) {
+    async createCategory(@Context() ctx, @Args() args) {
         const { categoryName } = args;
-        return this.categoryService.add(this.userId(ctx), categoryName);
+        let result = await this.categoryService.add(this.userId(ctx), categoryName);
+        if (result instanceof Category) {
+            return result;
+        } else {
+            throw new ServerUnavailableError('Service Error: add')
+        }
     }
 
     @Mutation('updateCategory')
     async updateCategory(@Args() args) {
         const { categoryId, categoryName } = args;
         let result = await this.categoryService.update(categoryId, categoryName);
-        console.log(result);
-        return !!result;
+        if (result.raw.affectedRows === 1) {
+            let updatedCategory = await this.categoryService.findById(categoryId);
+            return updatedCategory;
+        }
     }
 
     @Mutation('deleteCategory')
     async deleteCategory(@Args() args) {
         const { categoryId } = args;
         let result = await this.categoryService.delete(categoryId);
-        return result instanceof Category && !result.id;
+        if (result instanceof Category && !result.id) {
+            return true;
+        } else {
+            throw new ServerUnavailableError('Service Error: delete')
+        }
     }
 }

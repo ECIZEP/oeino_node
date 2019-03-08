@@ -118,9 +118,9 @@ export class OAuth2Controler {
                 let newUserId = userInstance.id;
                 if (state.platform === 'google') {
                     userInstance.googleId = response.data.id.toString();
-                    let result = await this.userService.find({ googleId: userInstance.googleId })
-                    if (result.length > 0) {
-                        userInstance = result[0];
+                    let result = await this.userService.findOneById({ googleId: userInstance.googleId })
+                    if (result) {
+                        userInstance = result;
                     } else {
                         userInstance.nickname = response.data.name;
                         userInstance.avatar = response.data.picture;
@@ -128,9 +128,9 @@ export class OAuth2Controler {
                     }
                 } else if (state.platform === 'github') {
                     userInstance.githubId = response.data.id.toString();
-                    let result = await this.userService.find({ githubId: userInstance.githubId })
-                    if (result.length > 0) {
-                        userInstance = result[0];
+                    let result = await this.userService.findOneById({ githubId: userInstance.githubId })
+                    if (result) {
+                        userInstance = result;
                     } else {
                         userInstance.nickname = response.data.name;
                         userInstance.avatar = response.data.avatar_url;
@@ -138,9 +138,9 @@ export class OAuth2Controler {
                     }
                 } else if (state.platform === 'weibo') {
                     userInstance.weibo = response.data.idstr;
-                    let result = await this.userService.find({ weibo: userInstance.weibo })
-                    if (result.length > 0) {
-                        userInstance = result[0];
+                    let result = await this.userService.findOneById({ weibo: userInstance.weibo })
+                    if (result) {
+                        userInstance = result;
                     } else {
                         let map = { m: 1, f: 2, n: 0 };
                         userInstance.nickname = response.data.name;

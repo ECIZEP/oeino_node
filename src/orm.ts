@@ -2,13 +2,14 @@ import { createConnection } from 'typeorm';
 import { User } from './entity/user.entity';
 
 createConnection({
-    "type": "mysql",
-    "host": "localhost",
-    "port": 3306,
-    "username": "root",
-    "password": "Hotsoon@2018",
-    "database": "oeino",
-    "entities": ["nest/**/**.entity{.ts,.js}"]
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "Hotsoon@2018",
+    database: "oeino",
+    logging: true,
+    entities: ["nest/**/**.entity{.ts,.js}"]
 }).then(async connection => {
     let user = new User();
     user.nickname = 'test';

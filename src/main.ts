@@ -14,15 +14,16 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.use(session({
         // cookie中保存session id的字段名称
-        name: config.session.key,
+        name: 'OEINO_SESSION',
         // hash secret的值放在cookie中，防止cookie篡改
-        secret: config.session.secret,
+        secret: 'biubiubiu',
         // 强制更新 session
         resave: true,
         // 设置为 false，强制创建一个 session，即使用户未登录
         saveUninitialized: false,
         cookie: {
-            domain: 'oeino.cn'
+            domain: 'oeino.cn',
+            maxAge: 1000*60*60*24*30
         },
         store: new FileStore()
     }));

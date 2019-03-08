@@ -6,7 +6,6 @@ import { NotLoginError } from "../../util/errors";
 export class UserGuard implements CanActivate {
     canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean>{
         const req = context.getArgByIndex(2).req;
-        console.log(req.session.user);
         if (req.session && !req.session.user) throw new NotLoginError('User Not Login');
         return true
     }

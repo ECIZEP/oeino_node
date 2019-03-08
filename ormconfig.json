@@ -6,6 +6,7 @@
     "password": "Hotsoon@2018",
     "database": "oeino",
     "entities": ["src/**/**.entity{.ts,.js}"],
-    "synchronize": true
+    "synchronize": false,
+    "logging": true
 }
   

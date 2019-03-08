@@ -11,6 +11,6 @@ type Query {
 
 type Mutation {
     createCategory(categoryName: String!): Category,
-    updateCategory(categoryId: String!, categoryName: String!): Boolean,
+    updateCategory(categoryId: String!, categoryName: String!): Category,
     deleteCategory(categoryId: String!): Boolean
 }
